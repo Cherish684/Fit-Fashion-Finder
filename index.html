@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Style Maven - Your Personal Fashion Guide</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Style Maven</h1>
+            <p>Discover your perfect style based on your body type and season</p>
+        </div>
+        <div class="section active welcome" id="welcome">
+            <h2>Welcome to Your Personal Style Journey!</h2>
+            <p>Let's find out what styles work best for you. We'll start with a quick quiz to determine your body type, then provide personalized recommendations based on the season.</p>
+            <button class="btn" onclick="startQuiz()">Start Style Quiz</button>
+        </div>
+        <div class="section" id="quiz">
+            <h2>Body Type Quiz</h2>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressBar"></div>
+            </div>
+            <div id="quizContent">
+                <div class="quiz-question">
+                    <h3>Let's measure your body dimensions</h3>
+                    <div class="input-group">
+                        <label>Bust/Chest (inches):</label>
+                        <input type="number" id="bust" placeholder="Enter measurement">
+                    </div>
+                    <div class="input-group">
+                        <label>Waist (inches):</label>
+                        <input type="number" id="waist" placeholder="Enter measurement">
+                    </div>
+                    <div class="input-group">
+                        <label>Hips (inches):</label>
+                        <input type="number" id="hips" placeholder="Enter measurement">
+                    </div>
+                    <div class="input-group">
+                        <label>Shoulders (inches):</label>
+                        <input type="number" id="shoulders" placeholder="Enter measurement">
+                    </div>
+                    <button class="btn" onclick="calculateBodyType()">Calculate My Body Type</button>
+                </div>
+            </div>
+        </
+        <div class="section" id="bodyTypeResult">
+            <div class="body-shape-result">
+                <h2>Your Body Type</h2>
+                <div id="bodyTypeDisplay"></div>
+                <p id="bodyTypeDescription"></p>
+            </div>
+            <button class="btn" onclick="showSeasonSelection()">Continue to Season Selection</button>
+        </div>
+        <div class="section" id="seasonSelection">
+            <h2>Select Your Season</h2>
+            <p>Choose the season you want style recommendations for:</p>
+            <div class="season-selector">
+                <div class="season-card" onclick="selectSeason('summer')">
+                    <h3>🌞 Summer</h3>
+                    <p>Light, breathable fabrics</p>
+                </div>
+                <div class="season-card" onclick="selectSeason('winter')">
+                    <h3>❄️ Winter</h3>
+                    <p>Warm, layered clothing</p>
+                </div>
+                <div class="season-card" onclick="selectSeason('monsoon')">
+                    <h3>🌧️ Monsoon</h3>
+                    <p>Quick-dry, weather-resistant</p>
+                </div>
+            </div>
+            <button class="btn hidden" id="proceedToRecommendations" onclick="showRecommendations()">Get My Recommendations</button>
+        </div>
+        <div class="section" id="recommendations">
+            <h2>Your Personalized Style Recommendations</h2>
+            <div id="recommendationSummary"></div>
+            <div class="recommendations" id="recommendationsList"></div>
+            <button class="btn" onclick="showDashboard()">Go to Style Dashboard</button>
+        </div>
+        <div class="section" id="dashboard">
+            <h2>Style Score Calculator</h2>
+            <p>Select your outfit and see how well it matches your <span id="userBodyType"></span> body type!</p>
+            
+            <div class="outfit-selector">
+                <div class="selector-note">
+                    <p>💡 Choose either a dress OR top + bottom combination</p>
+                </div>
+                
+                <div class="clothing-grid">
+                    <div class="clothing-category">
+                        <h3>👕 Tops</h3>
+                        <div class="clothing-scroll" id="tops-container">
+                            
+                        </div>
+                    </div>
+                    <div class="clothing-category">
+                        <h3>👖 Bottoms</h3>
+                        <div class="clothing-scroll" id="bottoms-container">
+                            
+                        </div>
+                    </div>
+                    <div class="clothing-category">
+                        <h3>👗 Dresses</h3>
+                        <div class="clothing-scroll" id="dresses-container">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="selection-summary" id="selectionSummary">
+                <h3>Your Current Selection:</h3>
+                <div class="selected-items">
+                    <div class="selected-item" id="selectedTop">No top selected</div>
+                    <div class="selected-item" id="selectedBottom">No bottom selected</div>
+                    <div class="selected-item" id="selectedDress">No dress selected</div>
+                </div>
+            </div>
+
+            <button class="btn calculate-btn" onclick="calculateStyleScore()">
+                ✨ Calculate My Style Score ✨
+            </button>
+            
+            <div class="score-display hidden" id="scoreDisplay">
+                <div class="score-container">
+                    <div class="score-circle" id="scoreCircle">0</div>
+                    <div class="score-details">
+                        <h3>Your Style Score</h3>
+                        <div class="score-breakdown" id="scoreBreakdown"></div>
+                        <p id="scoreText"></p>
+                    </div>
+                </div>
+            </div>+
+        </div>
+        <div class="navigation">
+            <button class="nav-btn" onclick="showSection('welcome')">Home</button>
+            <button class="nav-btn" onclick="showSection('quiz')">Quiz Result</button>
+            <button class="nav-btn" onclick="showSection('recommendations')">Recommendations</button>
+            <button class="nav-btn" onclick="showSection('dashboard')">Dashboard</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
